@@ -33,25 +33,30 @@ namespace RockPaperScissors
                 //Instantiate GameOptionsModel
                 GameOptionsModel gameOptionsModel = new GameOptionsModel();
 
+                //declare string.empty playerName
                 string playerName = string.Empty;
+
+                string gameStr = string.Empty;
+
+                int numOfGames = 0;
                 #endregion
 
                 while (string.IsNullOrEmpty(gameOptionsModel.PlayerName))
                 {
                     Console.Clear();
-                    Console.Write("Welcome to Rock, Paper, Scissors.\r\n\r\nPlease enter your nickname... ");
+                    Console.Write("Welcome to Rock, Paper, Scissors.\r\n\r\nPlease enter your nickname. ");
                     playerName = Console.ReadLine();
                     gameOptionsModel.PlayerName = playerName;
                 }
 
-                Console.Write($"Welcome {gameOptionsModel.PlayerName}...\r\n\r\nHow many games do you wish to play? Please enter an odd number... ");
-                string gameStr = Console.ReadLine();
-                int numOfGames = 0;
+                Console.Write($"Welcome {gameOptionsModel.PlayerName}...\r\n\r\nHow many games do you wish to play? Please enter an odd number. ");
+                gameStr = Console.ReadLine();
+                
                 int.TryParse(gameStr, out numOfGames);
 
                 while (numOfGames <= 0 || numOfGames % 2 == 0)
                 {
-                    Console.Write($"{gameStr} is not a valid input.\r\nPlease enter the amount of games you wish to play. The number you enter must be an odd number... ");
+                    Console.Write($"{gameStr} is not a valid input.\r\nPlease enter the amount of games you wish to play. The number you enter must be an odd number.");
                     gameStr = Console.ReadLine();
                     int.TryParse(gameStr, out numOfGames);
                 }
@@ -81,7 +86,7 @@ namespace RockPaperScissors
             catch (Exception ex)
             {
                 Console.WriteLine();
-                Console.WriteLine($"Error: {ex.Message}");
+                Console.WriteLine($"Error Message: {ex.Message}");
                 Console.ReadLine();
             }    
         }

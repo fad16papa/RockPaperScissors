@@ -45,7 +45,7 @@ namespace RockPaperScissors.Application.Respository
             }
             else
             {
-                Console.WriteLine("\r\nMaybe you will have better luck next time.");
+                Console.WriteLine("\r\nBetter luck next time.");
             }
                 
             Console.Write("\r\nPress [Enter] to finish the game.");
@@ -65,17 +65,17 @@ namespace RockPaperScissors.Application.Respository
                 Console.Write("-");
             }  
 
-            Console.Write("ROCK, PAPER, SCISSORS...");
-            Console.SetCursorPosition(gameOptionsModel.ScoreX, gameOptionsModel.ScoreY);
+            Console.Write("ROCK, PAPER, SCISSORS");
+            Console.SetCursorPosition(gameOptionsModel.ScoreXAxis, gameOptionsModel.ScoreYAxis);
             Console.Write($"Scores: {gameOptionsModel.PlayerName} Player: {FormatScore(gameOptionsModel.PlayerWins)}  Computer: {FormatScore(gameOptionsModel.ComputerWins)} ");
-            Console.SetCursorPosition(0, gameOptionsModel.ScoreY + 1);
+            Console.SetCursorPosition(0, gameOptionsModel.ScoreYAxis + 1);
 
             for (int i = 0; i < Console.WindowWidth; i++)
             {
                 Console.Write("-");
             }
                 
-            Console.SetCursorPosition(0, gameOptionsModel.ScoreY + 2);
+            Console.SetCursorPosition(0, gameOptionsModel.ScoreYAxis + 2);
         }
 
         /// <summary>
@@ -200,8 +200,8 @@ namespace RockPaperScissors.Application.Respository
             if (right < "ROCK, PAPER, SCISSORS...".Length)
                 top++;
 
-            gameOptionsModel.ScoreX = right;
-            gameOptionsModel.ScoreY = top;
+            gameOptionsModel.ScoreXAxis = right;
+            gameOptionsModel.ScoreYAxis = top;
 
             return gameOptionsModel;
         }
