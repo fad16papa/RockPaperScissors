@@ -1,0 +1,10 @@
+D:\.NetCore\RockPaperScissors\RockPaperScissors\obj\Debug\RockPaperScissors.csprojAssemblyReference.cache
+D:\.NetCore\RockPaperScissors\RockPaperScissors\obj\Debug\RockPaperScissors.csproj.CoreCompileInputs.cache
+D:\.NetCore\RockPaperScissors\RockPaperScissors\bin\Debug\RockPaperScissors.exe.config
+D:\.NetCore\RockPaperScissors\RockPaperScissors\bin\Debug\RockPaperScissors.exe
+D:\.NetCore\RockPaperScissors\RockPaperScissors\bin\Debug\RockPaperScissors.pdb
+D:\.NetCore\RockPaperScissors\RockPaperScissors\bin\Debug\Newtonsoft.Json.dll
+D:\.NetCore\RockPaperScissors\RockPaperScissors\bin\Debug\Newtonsoft.Json.xml
+D:\.NetCore\RockPaperScissors\RockPaperScissors\obj\Debug\RockPaperScissors.csproj.CopyComplete
+D:\.NetCore\RockPaperScissors\RockPaperScissors\obj\Debug\RockPaperScissors.exe
+D:\.NetCore\RockPaperScissors\RockPaperScissors\obj\Debug\RockPaperScissors.pdb
