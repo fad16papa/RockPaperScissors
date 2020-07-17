@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RockPaperScissors.Models
+namespace RockPaperScissors.Domain
 {
     public class GameOptionsModel
     {

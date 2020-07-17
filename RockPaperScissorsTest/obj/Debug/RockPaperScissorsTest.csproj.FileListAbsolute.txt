@@ -1,0 +1,17 @@
+D:\.NetCore\RockPaperScissors\RockPaperScissorsTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+D:\.NetCore\RockPaperScissors\RockPaperScissorsTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+D:\.NetCore\RockPaperScissors\RockPaperScissorsTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+D:\.NetCore\RockPaperScissors\RockPaperScissorsTest\bin\Debug\RockPaperScissorsTest.dll
+D:\.NetCore\RockPaperScissors\RockPaperScissorsTest\bin\Debug\RockPaperScissorsTest.pdb
+D:\.NetCore\RockPaperScissors\RockPaperScissorsTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+D:\.NetCore\RockPaperScissors\RockPaperScissorsTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+D:\.NetCore\RockPaperScissors\RockPaperScissorsTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+D:\.NetCore\RockPaperScissors\RockPaperScissorsTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+D:\.NetCore\RockPaperScissors\RockPaperScissorsTest\obj\Debug\RockPaperScissorsTest.csprojAssemblyReference.cache
+D:\.NetCore\RockPaperScissors\RockPaperScissorsTest\obj\Debug\RockPaperScissorsTest.csproj.CoreCompileInputs.cache
+D:\.NetCore\RockPaperScissors\RockPaperScissorsTest\obj\Debug\RockPaperScissorsTest.csproj.CopyComplete
+D:\.NetCore\RockPaperScissors\RockPaperScissorsTest\obj\Debug\RockPaperScissorsTest.dll
+D:\.NetCore\RockPaperScissors\RockPaperScissorsTest\obj\Debug\RockPaperScissorsTest.pdb
+D:\.NetCore\RockPaperScissors\RockPaperScissorsTest\bin\Debug\RockPaperScissors.exe
+D:\.NetCore\RockPaperScissors\RockPaperScissorsTest\bin\Debug\RockPaperScissors.pdb
+D:\.NetCore\RockPaperScissors\RockPaperScissorsTest\bin\Debug\RockPaperScissors.exe.config

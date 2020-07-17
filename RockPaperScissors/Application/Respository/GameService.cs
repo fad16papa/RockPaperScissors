@@ -1,5 +1,5 @@
 ﻿using RockPaperScissors.Application.Interface;
-using RockPaperScissors.Models;
+using RockPaperScissors.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,7 +34,7 @@ namespace RockPaperScissors.Application.Respository
         public void DrawEnd(GameOptionsModel gameOptionsModel)
         {
             DrawGameBoard(gameOptionsModel);
-            Console.WriteLine("Thank you for playing Rock, Paper, Scissors.");
+            Console.WriteLine("Thank you for playing the game.");
             Console.WriteLine("\r\n\r\nThe final score was:");
             Console.WriteLine($"\r\n{gameOptionsModel.PlayerName}: {gameOptionsModel.PlayerWins}");
             Console.WriteLine($"\r\nComputer: {gameOptionsModel.ComputerWins}");
@@ -117,7 +117,7 @@ namespace RockPaperScissors.Application.Respository
             while (playerChoice == PlayerOptionModel.Invalid)
             {
 
-                Console.Write("Please make your selection. R - Rock, P - Paper, S - Scissors, Q - Quit ");
+                Console.Write("Please choose. R - Rock, P - Paper, S - Scissors, Q - Quit ");
                 string choice = Console.ReadLine();
                 switch (choice.ToLowerInvariant().Trim())
                 {
@@ -139,7 +139,7 @@ namespace RockPaperScissors.Application.Respository
                         break;
 
                     default:
-                        Console.WriteLine($"{choice} is not a valid selection. Please try again.\r\n");
+                        Console.WriteLine($"{choice} is not a valid. Please try again.\r\n");
                         break;
                 }
 
@@ -158,8 +158,8 @@ namespace RockPaperScissors.Application.Respository
                 return gameOptionsModel;
             }
 
-            Console.WriteLine($"The computer selected: {computerChoice}");
-            Console.WriteLine($"You selected: {playerChoice}");
+            Console.WriteLine($"The computer choosed: {computerChoice}");
+            Console.WriteLine($"You choosed: {playerChoice}");
 
             //Calaculate who will be the winner and increment the resutls
             gameOptionsModel = CalculateWinner(playerChoice, computerChoice);
@@ -180,7 +180,7 @@ namespace RockPaperScissors.Application.Respository
         public GameOptionsModel SetupGame(GameOptionsModel gameOptionsModel)
         {
             /*  Template
-            *  Score: {playerName}: {playerWins, 4 spaces}      Computer: {computerWins, 4 spaces} 
+            *  Score: {playerName}: {playerWins, 2 spaces}      Computer: {computerWins, 2 spaces} 
             */
 
             int requiredWidth = "Score: ".Length +
