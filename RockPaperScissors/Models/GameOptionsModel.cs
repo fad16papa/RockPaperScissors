@@ -8,13 +8,14 @@ namespace RockPaperScissors.Models
 {
     public class GameOptionsModel
     {
-        public int computerWins { get; set; }
-        public int firstComputerWins { get; set; }
-        public int secondComputerWins { get; set; }
-        public int playerWins { get; set; }
-        public string playerName { get; set; }
-        public int scoreX { get; set; }
-        public int scoreY { get; set; }
-        public int numberOfGames { get; set; }
+        public int ComputerWins { get; set; }
+        public int FirstComputerWins { get; set; }
+        public int SecondComputerWins { get; set; }
+        public int PlayerWins { get; set; }
+        public string PlayerName { get; set; }
+        public int ScoreX { get; set; }
+        public int ScoreY { get; set; }
+        public int NumberOfGames { get; set; }
+        public bool AnotherRound { get; set; }
     }
 }

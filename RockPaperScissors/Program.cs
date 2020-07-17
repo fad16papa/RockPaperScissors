@@ -10,7 +10,6 @@ namespace RockPaperScissors
 {
     public class Program
     {
-
         static void Main(string[] args)
         {
             var game = new Game();
@@ -20,16 +19,6 @@ namespace RockPaperScissors
 
     public class Game
     {
-        /// <summary>
-        /// dictionary of winners
-        /// </summary>
-        Dictionary<PlayerOptionModel, PlayerOptionModel> winners = new Dictionary<PlayerOptionModel, PlayerOptionModel>
-        {
-            { PlayerOptionModel.Rock, PlayerOptionModel.Scissors },
-            { PlayerOptionModel.Scissors, PlayerOptionModel.Paper },
-            { PlayerOptionModel.Paper, PlayerOptionModel.Rock }
-        };
-
         /// <summary>
         /// Starts the game
         /// </summary>
@@ -43,16 +32,19 @@ namespace RockPaperScissors
 
                 //Instantiate GameOptionsModel
                 GameOptionsModel gameOptionsModel = new GameOptionsModel();
+
+                string playerName = string.Empty;
                 #endregion
 
-                while (string.IsNullOrEmpty(gameOptionsModel.playerName))
+                while (string.IsNullOrEmpty(gameOptionsModel.PlayerName))
                 {
                     Console.Clear();
                     Console.Write("Welcome to Rock, Paper, Scissors.\r\n\r\nPlease enter your nickname... ");
-                    gameOptionsModel.playerName = Console.ReadLine();
+                    playerName = Console.ReadLine();
+                    gameOptionsModel.PlayerName = playerName;
                 }
 
-                Console.Write($"Welcome {gameOptionsModel.playerName}...\r\n\r\nHow many games do you wish to play? Please enter an odd number... ");
+                Console.Write($"Welcome {gameOptionsModel.PlayerName}...\r\n\r\nHow many games do you wish to play? Please enter an odd number... ");
                 string gameStr = Console.ReadLine();
                 int numOfGames = 0;
                 int.TryParse(gameStr, out numOfGames);
@@ -64,7 +56,7 @@ namespace RockPaperScissors
                     int.TryParse(gameStr, out numOfGames);
                 }
 
-                gameOptionsModel.numberOfGames = numOfGames;
+                gameOptionsModel.NumberOfGames = numOfGames;
 
                 gameOptionsModel = gameService.SetupGame(gameOptionsModel);
                 gameService.DrawGameBoard(gameOptionsModel);
@@ -74,9 +66,16 @@ namespace RockPaperScissors
 
 
                 for (int i = 0; i < numOfGames; i++)
-                    if (!gameService.PlayRound(i, gameOptionsModel))
-                        break;
+                {
+                    gameOptionsModel.PlayerName = playerName;
+                    gameOptionsModel = gameService.PlayRound(i, gameOptionsModel);
 
+                    if (!gameOptionsModel.AnotherRound)
+                    {
+                        break;
+                    }
+                }
+                    
                 gameService.DrawEnd(gameOptionsModel);
             }
             catch (Exception ex)

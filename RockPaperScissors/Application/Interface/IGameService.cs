@@ -14,14 +14,14 @@ namespace RockPaperScissors.Application.Interface
         /// </summary>
         /// <param name="roundNumber"></param>
         /// <returns></returns>
-        bool PlayRound(int roundNumber, GameOptionsModel gameOptionsModel);
+        GameOptionsModel PlayRound(int roundNumber, GameOptionsModel gameOptionsModel);
 
         /// <summary>
         /// Calculates the winner
         /// </summary>
         /// <param name="player"></param>
         /// <param name="computer"></param>
-        void CalculateWinner(PlayerOptionModel player, PlayerOptionModel computer);
+        GameOptionsModel CalculateWinner(PlayerOptionModel player, PlayerOptionModel computer);
 
         /// <summary>
         /// Sets up a game board
