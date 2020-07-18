@@ -13,51 +13,6 @@ namespace RockPaperScissorsTest
     [TestClass]
     public class RockPaperScissorsTest
     {
-        public RockPaperScissorsTest()
-        {
-
-        }
-
-        private TestContext testContextInstance;
-
-        /// <summary>
-        ///Gets or sets the test context which provides
-        ///information about and functionality for the current test run.
-        ///</summary>
-        public TestContext TestContext
-        {
-            get
-            {
-                return testContextInstance;
-            }
-            set
-            {
-                testContextInstance = value;
-            }
-        }
-
-        #region Additional test attributes
-        //
-        // You can use the following additional attributes as you write your tests:
-        //
-        // Use ClassInitialize to run code before running the first test in the class
-        // [ClassInitialize()]
-        // public static void MyClassInitialize(TestContext testContext) { }
-        //
-        // Use ClassCleanup to run code after all tests in a class have run
-        // [ClassCleanup()]
-        // public static void MyClassCleanup() { }
-        //
-        // Use TestInitialize to run code before running each test 
-        // [TestInitialize()]
-        // public void MyTestInitialize() { }
-        //
-        // Use TestCleanup to run code after each test has run
-        // [TestCleanup()]
-        // public void MyTestCleanup() { }
-        //
-        #endregion
-
         /// <summary>
         /// This test method will check and compare the player selection 
         /// </summary>
@@ -70,9 +25,9 @@ namespace RockPaperScissorsTest
             //declare string choice to check the player selection 
             //compare the string choice base to PlayerOptionModel enum model
             //using switch case 
-            string choice = "paper";
+            string choice = "r";
 
-            //declare bool if the user selected q/quit
+            //bool if the user selected q/quit
             bool quit = false;
 
             //use while loop 
@@ -136,10 +91,34 @@ namespace RockPaperScissorsTest
             }
         }
 
+        /// <summary>
+        /// This test method will check and compare the computer selection 
+        /// </summary>
         [TestMethod]
         public void CheckComputerSelection()
-        { 
+        {
+            //declare random property
+            Random random = new Random();
+
+            int range = random.Next(0, 3);
+
             
+            //Nested if checking the range and PlayerOptionModel
+            //if its rock, paper or scissors 
+            if (range == (int)PlayerOptionModel.Rock)
+            {
+                Assert.AreEqual(range, (int)PlayerOptionModel.Rock);
+            }
+
+            if (range == (int)PlayerOptionModel.Paper)
+            {
+                Assert.AreEqual(range, (int)PlayerOptionModel.Paper);
+            }
+
+            if (range == (int)PlayerOptionModel.Scissors)
+            {
+                Assert.AreEqual(range, (int)PlayerOptionModel.Scissors);
+            }
         }
     }
 }

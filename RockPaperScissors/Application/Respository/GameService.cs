@@ -14,8 +14,6 @@ namespace RockPaperScissors.Application.Respository
         //Instantiate GameOptionsModel
         GameOptionsModel gameOptionsModel = new GameOptionsModel();
 
-        //declare random property
-        static Random random = new Random();
 
         /// <summary>
         /// Dictionary of winners
@@ -95,6 +93,8 @@ namespace RockPaperScissors.Application.Respository
         /// <returns></returns>
         public PlayerOptionModel GetComputerPlayerOptionModel()
         {
+            Random random = new Random();
+
             int range = random.Next(0, 3);  
 
             return (PlayerOptionModel)range;
