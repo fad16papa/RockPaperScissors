@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Text;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using RockPaperScissors;
 using RockPaperScissors.Domain;
-using System.Runtime.InteropServices;
-using System.Threading.Tasks;
-using System.Linq;
-using System.Runtime.CompilerServices;
 using RockPaperScissors.Helper;
 using RockPaperScissors.Application.Respository;
 
