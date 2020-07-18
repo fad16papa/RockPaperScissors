@@ -3,6 +3,7 @@ using System.Text;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RockPaperScissors;
+using RockPaperScissors.Domain;
 
 namespace RockPaperScissorsTest
 {
@@ -14,9 +15,7 @@ namespace RockPaperScissorsTest
     {
         public RockPaperScissorsTest()
         {
-            //
-            // TODO: Add constructor logic here
-            //
+
         }
 
         private TestContext testContextInstance;
@@ -60,11 +59,56 @@ namespace RockPaperScissorsTest
         #endregion
 
         [TestMethod]
-        public void TestMethod1()
+        public void CheckPlayerSelection()
         {
-            //
-            // TODO: Add test logic here
-            //
+            //Instantiate GameOptionsModel
+            GameOptionsModel gameOptionsModel = new GameOptionsModel();
+
+            // R - Rock, P - Paper, S - Scissors, Q - Quit
+            PlayerOptionModel playerChoice = PlayerOptionModel.Invalid;
+
+            //declare string choice to check the player selection 
+            //compare the string choice base to PlayerOptionModel enum model
+            //using switch case 
+            string choice = "r";
+
+            //use while loop 
+            //if the playerChoice will be equals to invalid continue loop 
+            //check the value of choice string by switch case and compare base on the case 
+            while (playerChoice == PlayerOptionModel.Invalid)
+            {
+                switch (choice.ToLowerInvariant().Trim())
+                {
+                    case "rock":
+                    case "r":
+                        playerChoice = PlayerOptionModel.Rock;
+                        break;
+                    case "paper":
+                    case "p":
+                        playerChoice = PlayerOptionModel.Paper;
+                        break;
+                    case "scissors":
+                    case "s":
+                        playerChoice = PlayerOptionModel.Scissors;
+                        break;
+                    case "quit":
+                    case "q":
+                        break;
+
+                    default:
+                        // choice is not valid
+                        break;
+                }
+            }
+
+            //Change the PlayerOptionModel to Rock, Paper and/or scissors to check if the assert result is correct
+            Assert.AreEqual(playerChoice, PlayerOptionModel.Rock);
+        }
+
+        [TestMethod]
+        public void CheckComputerSelection()
+        { 
+            
         }
     }
 }

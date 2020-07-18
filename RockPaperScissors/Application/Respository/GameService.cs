@@ -95,7 +95,7 @@ namespace RockPaperScissors.Application.Respository
         /// <returns></returns>
         public PlayerOptionModel GetComputerPlayerOptionModel()
         {
-            int range = random.Next(0, 3);
+            int range = random.Next(0, 3);  
 
             return (PlayerOptionModel)range;
         }
