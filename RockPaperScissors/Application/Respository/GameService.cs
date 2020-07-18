@@ -10,52 +10,61 @@ namespace RockPaperScissors.Application.Respository
 {
     public class GameService : IGameService
     {
-        #region Properties
-        //Instantiate GameOptionsModel
-        GameOptionsModel gameOptionsModel = new GameOptionsModel();
-
-        //declare random property
-        static Random random = new Random();
-
         /// <summary>
-        /// Dictionary of winners
+        /// Sets up a game board
         /// </summary>
-        Dictionary<PlayerOptionModel, PlayerOptionModel> winners = new Dictionary<PlayerOptionModel, PlayerOptionModel>
+        public GameOptions SetupGame(GameOptions gameOptions)
         {
-            { PlayerOptionModel.Rock, PlayerOptionModel.Scissors },
-            { PlayerOptionModel.Scissors, PlayerOptionModel.Paper },
-            { PlayerOptionModel.Paper, PlayerOptionModel.Rock }
-        };
-        #endregion
-
-        /// <summary>
-        /// Draws the end of the game
-        /// </summary>
-        public void DrawEnd(GameOptionsModel gameOptionsModel)
-        {
-            DrawGameBoard(gameOptionsModel);
-            Console.WriteLine("Thank you for playing the game.");
-            Console.WriteLine("\r\n\r\nThe final score was:");
-            Console.WriteLine($"\r\n{gameOptionsModel.PlayerName}: {gameOptionsModel.PlayerWins}");
-            Console.WriteLine($"\r\nComputer: {gameOptionsModel.ComputerWins}");
-
-            if (gameOptionsModel.PlayerWins > gameOptionsModel.ComputerWins)
+            /*  Template
+            *  Score: {playerName}: {playerWins, 2 spaces}      Computer: {computerWins, 2 spaces} 
+            */
+            int requiredWidth = 0;
+            if (gameOptions.computerOnly)
             {
-                Console.WriteLine("\r\nCongratulations, you have won this round.");
+                requiredWidth = "Score: ".Length +
+                  "Computer".Length +
+                  1 +
+                  1 +
+                  4 +
+                  4 +
+                  "Computer".Length +
+                  1 +
+                  1 +
+                  4 +
+                  1;
             }
             else
             {
-                Console.WriteLine("\r\nBetter luck next time.");
+                requiredWidth = "Score: ".Length +
+                  gameOptions.PlayerName.Length +
+                  1 +
+                  1 +
+                  4 +
+                  4 +
+                  "Computer".Length +
+                  1 +
+                  1 +
+                  4 +
+                  1;
             }
-                
-            Console.Write("\r\nPress [Enter] to finish the game.");
-            Console.ReadLine();
+
+
+
+            int right = Console.WindowWidth - requiredWidth;
+            int top = 1;
+            if (right < "ROCK, PAPER, SCISSORS...".Length)
+                top++;
+
+            gameOptions.ScoreXAxis = right;
+            gameOptions.ScoreYAxis = top;
+
+            return gameOptions;
         }
 
         /// <summary>
         /// Draws the game board header
         /// </summary>
-        public void DrawGameBoard(GameOptionsModel gameOptionsModel)
+        public void DrawGameBoard(GameOptions gameOptions)
         {
             Console.Clear();
             Console.SetCursorPosition(0, 0);
@@ -66,16 +75,224 @@ namespace RockPaperScissors.Application.Respository
             }  
 
             Console.Write("ROCK, PAPER, SCISSORS");
-            Console.SetCursorPosition(gameOptionsModel.ScoreXAxis, gameOptionsModel.ScoreYAxis);
-            Console.Write($"Scores: {gameOptionsModel.PlayerName} Player: {FormatScore(gameOptionsModel.PlayerWins)}  Computer: {FormatScore(gameOptionsModel.ComputerWins)} ");
-            Console.SetCursorPosition(0, gameOptionsModel.ScoreYAxis + 1);
+            Console.SetCursorPosition(gameOptions.ScoreXAxis, gameOptions.ScoreYAxis);
+            if (gameOptions.computerOnly)
+            {
+                Console.Write($"Scores: Computer1: {FormatScore(gameOptions.FirstComputerWins)} Computer2: {FormatScore(gameOptions.SecondComputerWins)} ");
+            }
+            else
+            {
+                Console.Write($"Scores: {gameOptions.PlayerName} Player: {FormatScore(gameOptions.PlayerWins)}  Computer: {FormatScore(gameOptions.ComputerWins)} ");
+            }
+            
+            Console.SetCursorPosition(0, gameOptions.ScoreYAxis + 1);
 
             for (int i = 0; i < Console.WindowWidth; i++)
             {
                 Console.Write("-");
             }
                 
-            Console.SetCursorPosition(0, gameOptionsModel.ScoreYAxis + 2);
+            Console.SetCursorPosition(0, gameOptions.ScoreYAxis + 2);
+        }
+
+        /// <summary>
+        /// Draws the end of the game
+        /// </summary>
+        public void DrawEnd(GameOptions gameOptions)
+        {
+            DrawGameBoard(gameOptions);
+            Console.WriteLine("Thank you for playing the game.");
+            Console.WriteLine("\r\n\r\nThe final score was:");
+
+            if(gameOptions.computerOnly)
+            {
+                Console.WriteLine($"\r\nComputer1: {gameOptions.FirstComputerWins}");
+                Console.WriteLine($"\r\nComputer2: {gameOptions.SecondComputerWins}");
+            }
+            else
+            {
+                Console.WriteLine($"\r\n{gameOptions.PlayerName}: {gameOptions.PlayerWins}");
+                Console.WriteLine($"\r\nComputer: {gameOptions.ComputerWins}");
+            }
+            
+
+            if (gameOptions.PlayerWins > gameOptions.ComputerWins)
+            {
+                Console.WriteLine("\r\nCongratulations!, you have won this game.");
+            }
+            if (gameOptions.PlayerWins == gameOptions.ComputerWins)
+            {
+                Console.WriteLine("\r\nIts a tie!!!");
+            }
+            if(gameOptions.PlayerWins < gameOptions.ComputerWins)
+            {
+                Console.WriteLine("\r\nYou lost! Better luck next time!.");
+            }
+
+            Console.Write("\r\nPress [Enter] to finish the game.");
+            Console.ReadLine();
+        }
+
+        /// <summary>
+        /// Gets the current player PlayerOption selection
+        /// </summary>
+        /// <returns></returns>
+        public PlayerOption GetPlayerSelection()
+        {
+            PlayerOption playerOption = PlayerOption.Invalid;
+            while (playerOption == PlayerOption.Invalid)
+            {
+                Console.Write("Please choose. R/r - Rock, P/p - Paper, S/s - Scissors ");
+                string choice = Console.ReadLine();
+                switch (choice.ToLowerInvariant().Trim())
+                {
+                    case "rock":
+                    case "r":
+                        playerOption = PlayerOption.Rock;
+                        break;
+                    case "paper":
+                    case "p":
+                        playerOption = PlayerOption.Paper;
+                        break;
+                    case "scissors":
+                    case "s":
+                        playerOption = PlayerOption.Scissors;
+                        break;
+
+                    default:
+                        Console.WriteLine($"{choice} is not a valid. Please try again.\r\n");
+                        break;
+                }
+            }
+
+            return playerOption;
+        }
+
+        /// <summary>
+        /// Gets the computer PlayerOption selection
+        /// </summary>
+        /// <returns></returns>
+        public PlayerOption GetComputerSelection()
+        {
+            Random random = new Random();
+
+            int range = random.Next(0, 3);
+
+            return (PlayerOption)range;
+        }
+
+        /// <summary>
+        /// Runs a player round
+        /// </summary>
+        /// <param name="roundNumber"></param>
+        /// <returns></returns>
+        public GameOptions PlayRound(GameOptions gameOptions)
+        {
+
+            DrawGameBoard(gameOptions);
+
+            if (gameOptions.computerOnly)
+            {
+                //Calculate who will be the winner computer vs computer
+                PlayerOption firstComputerChoice = GetComputerSelection();
+                PlayerOption secondComputerChoice = GetComputerSelection();               
+
+                gameOptions = CalculateWinner(firstComputerChoice, secondComputerChoice, gameOptions);
+                gameOptions.computerOnly = true;
+            }
+            else
+            { 
+
+                //Calaculate who will be the winner player vs computer 
+                PlayerOption computerChoice = GetComputerSelection();
+                Console.WriteLine($"The computer choosed: {computerChoice}");
+
+                PlayerOption playerChoice = GetPlayerSelection();
+                Console.WriteLine($"You choosed: {playerChoice}");               
+
+                gameOptions = CalculateWinner(playerChoice, computerChoice, gameOptions);
+                gameOptions.computerOnly = false;
+            }
+            
+            Console.Write("Press [Enter] to exit the game.");
+            Console.ReadLine();
+
+            return gameOptions;
+        }
+
+        /// <summary>
+        /// Calculates the winner
+        /// </summary>
+        /// <param name="player"></param>
+        /// <param name="computer"></param>
+        public GameOptions CalculateWinner(PlayerOption playerOption, PlayerOption computerOption, GameOptions gameOptions)
+        {
+            /// <summary>
+            /// Declare Dictionary for comparing of selection 
+            /// </summary>
+            Dictionary<PlayerOption, PlayerOption> winners = new Dictionary<PlayerOption, PlayerOption>
+            {
+                { PlayerOption.Rock, PlayerOption.Scissors },
+                { PlayerOption.Scissors, PlayerOption.Paper },
+                { PlayerOption.Paper, PlayerOption.Rock }
+            };
+
+            //if true the game will play computer vs computer 
+            //if false the game will play player vs computer
+            if (gameOptions.computerOnly)
+            {
+                //tie game
+                if (playerOption == computerOption)
+                {
+                    Console.WriteLine($"The game is a tie.");
+                    gameOptions.FirstComputerWins++;
+                    gameOptions.SecondComputerWins++;
+                }
+                else
+                {
+                    //if the result equals the computers roll then the player wins
+                    //otherwise the computer wins.
+                    var result = winners[playerOption];
+                    if (result == computerOption)
+                    {
+                        Console.WriteLine($"Computer1 wins {playerOption} beats {computerOption}.");
+                        gameOptions.FirstComputerWins++;
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Computer2 wins {computerOption} beats {playerOption}.");
+                        gameOptions.SecondComputerWins++;
+                    }
+                }
+            }
+            else
+            {
+                //tie game
+                if (playerOption == computerOption)
+                {
+                    Console.WriteLine($"The game is a tie.");
+                    gameOptions.PlayerWins++;
+                    gameOptions.ComputerWins++;
+                }
+                else
+                {
+                    //if the result equals the computers roll then the player wins
+                    //otherwise the computer wins.
+                    var result = winners[playerOption];
+                    if (result == computerOption)
+                    {
+                        Console.WriteLine($"Congratulations you won. {playerOption} beats {computerOption}.");
+                        gameOptions.PlayerWins++;
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Computer Wins. {computerOption} beats {playerOption}.");
+                        gameOptions.ComputerWins++;
+                    }
+                }
+            }
+
+            return gameOptions;
         }
 
         /// <summary>
@@ -87,161 +304,6 @@ namespace RockPaperScissors.Application.Respository
         {
             string format = "   " + score.ToString();
             return format.Substring(format.Length - 2);
-        }
-
-        /// <summary>
-        /// Gets the computer PlayerOptionModel selection
-        /// </summary>
-        /// <returns></returns>
-        public PlayerOptionModel GetComputerPlayerOptionModel()
-        {
-            int range = random.Next(0, 3);
-
-            return (PlayerOptionModel)range;
-        }
-
-        /// <summary>
-        /// Runs a player round
-        /// </summary>
-        /// <param name="roundNumber"></param>
-        /// <returns></returns>
-        public GameOptionsModel PlayRound(int roundNumber, GameOptionsModel gameOptionsModel)
-        {
-
-            DrawGameBoard(gameOptionsModel);
-
-            PlayerOptionModel computerChoice = GetComputerPlayerOptionModel();
-            PlayerOptionModel playerChoice = PlayerOptionModel.Invalid;
-            Console.WriteLine($"Round {roundNumber + 1}:");
-            bool quit = false;
-            while (playerChoice == PlayerOptionModel.Invalid)
-            {
-
-                Console.Write("Please choose. R - Rock, P - Paper, S - Scissors, Q - Quit ");
-                string choice = Console.ReadLine();
-                switch (choice.ToLowerInvariant().Trim())
-                {
-                    case "rock":
-                    case "r":
-                        playerChoice = PlayerOptionModel.Rock;
-                        break;
-                    case "paper":
-                    case "p":
-                        playerChoice = PlayerOptionModel.Paper;
-                        break;
-                    case "scissors":
-                    case "s":
-                        playerChoice = PlayerOptionModel.Scissors;
-                        break;
-                    case "quit":
-                    case "q":
-                        quit = true;
-                        break;
-
-                    default:
-                        Console.WriteLine($"{choice} is not a valid. Please try again.\r\n");
-                        break;
-                }
-
-                if (quit)
-                {
-                    break;
-                }                  
-            }
-
-            if (quit)
-            {
-                //set the property AnotherRound to false
-                //exit the game
-                gameOptionsModel.AnotherRound = false;
-
-                return gameOptionsModel;
-            }
-
-            Console.WriteLine($"The computer choosed: {computerChoice}");
-            Console.WriteLine($"You choosed: {playerChoice}");
-
-            //Calaculate who will be the winner and increment the resutls
-            gameOptionsModel = CalculateWinner(playerChoice, computerChoice);
-
-            Console.Write("Press [Enter] to start the next game.");
-            Console.ReadLine();
-
-            //set the porperty AnotherRound to true
-            //to continue the game
-            gameOptionsModel.AnotherRound = true;
-
-            return gameOptionsModel;
-        }
-
-        /// <summary>
-        /// Sets up a game board
-        /// </summary>
-        public GameOptionsModel SetupGame(GameOptionsModel gameOptionsModel)
-        {
-            /*  Template
-            *  Score: {playerName}: {playerWins, 2 spaces}      Computer: {computerWins, 2 spaces} 
-            */
-
-            int requiredWidth = "Score: ".Length +
-                               gameOptionsModel.PlayerName.Length +
-                               1 +
-                               1 +
-                               4 +
-                               4 +
-                               "Computer".Length +
-                               1 +
-                               1 +
-                               4 +
-                               1;
-
-            int right = Console.WindowWidth - requiredWidth;
-            int top = 1;
-            if (right < "ROCK, PAPER, SCISSORS...".Length)
-                top++;
-
-            gameOptionsModel.ScoreXAxis = right;
-            gameOptionsModel.ScoreYAxis = top;
-
-            return gameOptionsModel;
-        }
-
-        /// <summary>
-        /// Calculates the winner
-        /// </summary>
-        /// <param name="player"></param>
-        /// <param name="computer"></param>
-        public GameOptionsModel CalculateWinner(PlayerOptionModel player, PlayerOptionModel computer)
-        {
-            //tie game
-            if (player == computer)
-            {
-                Console.WriteLine($"The game is a tie.");
-                gameOptionsModel.PlayerWins++;
-                gameOptionsModel.ComputerWins++;
-            }
-            else
-            {
-                //calculating the winner is simple, simply get the
-                //winning combination for the player
-                //if the result equals the computers roll then the player wins
-                //otherwise the computer wins.
-                // such as player calls rock, winners[rock] == scissors. If computer == scissors then 
-                // player wins otherwise the computer wins as the only other option is paper 
-                // remeber the options of the computer has a rock is negated in the tie selection
-                var choice = winners[player];
-                if (choice == computer)
-                {
-                    Console.WriteLine($"Congratulations you won. {player} beats {computer}.");
-                    gameOptionsModel.PlayerWins++;
-                }
-                else
-                {
-                    Console.WriteLine($"Computer Wins. {computer} beats {player}.");
-                    gameOptionsModel.ComputerWins++;
-                }
-            }
-            return gameOptionsModel;
         }
     }
 }

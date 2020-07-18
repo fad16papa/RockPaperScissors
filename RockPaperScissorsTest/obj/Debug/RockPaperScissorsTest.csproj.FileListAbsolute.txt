@@ -5,6 +5,9 @@ D:\.NetCore\RockPaperScissors\RockPaperScissorsTest\bin\Debug\RockPaperScissorsT
 D:\.NetCore\RockPaperScissors\RockPaperScissorsTest\bin\Debug\RockPaperScissorsTest.pdb
 D:\.NetCore\RockPaperScissors\RockPaperScissorsTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
 D:\.NetCore\RockPaperScissors\RockPaperScissorsTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+D:\.NetCore\RockPaperScissors\RockPaperScissorsTest\bin\Debug\RockPaperScissors.exe
+D:\.NetCore\RockPaperScissors\RockPaperScissorsTest\bin\Debug\RockPaperScissors.pdb
+D:\.NetCore\RockPaperScissors\RockPaperScissorsTest\bin\Debug\RockPaperScissors.exe.config
 D:\.NetCore\RockPaperScissors\RockPaperScissorsTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
 D:\.NetCore\RockPaperScissors\RockPaperScissorsTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
 D:\.NetCore\RockPaperScissors\RockPaperScissorsTest\obj\Debug\RockPaperScissorsTest.csprojAssemblyReference.cache
@@ -12,6 +15,3 @@ D:\.NetCore\RockPaperScissors\RockPaperScissorsTest\obj\Debug\RockPaperScissorsT
 D:\.NetCore\RockPaperScissors\RockPaperScissorsTest\obj\Debug\RockPaperScissorsTest.csproj.CopyComplete
 D:\.NetCore\RockPaperScissors\RockPaperScissorsTest\obj\Debug\RockPaperScissorsTest.dll
 D:\.NetCore\RockPaperScissors\RockPaperScissorsTest\obj\Debug\RockPaperScissorsTest.pdb
-D:\.NetCore\RockPaperScissors\RockPaperScissorsTest\bin\Debug\RockPaperScissors.exe
-D:\.NetCore\RockPaperScissors\RockPaperScissorsTest\bin\Debug\RockPaperScissors.pdb
-D:\.NetCore\RockPaperScissors\RockPaperScissorsTest\bin\Debug\RockPaperScissors.exe.config

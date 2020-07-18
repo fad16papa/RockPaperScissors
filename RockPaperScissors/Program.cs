@@ -31,57 +31,53 @@ namespace RockPaperScissors
                 GameService gameService = new GameService();
 
                 //Instantiate GameOptionsModel
-                GameOptionsModel gameOptionsModel = new GameOptionsModel();
+                GameOptions gameOptions = new GameOptions();
 
-                //declare string.empty playerName
+                //declare string.empty playerName for container name of the player 
                 string playerName = string.Empty;
 
-                string gameStr = string.Empty;
+                //declare string.empty totalGameRound for cointaner of total game round specify by player
+                string totalGameRound = string.Empty;
 
-                int numOfGames = 0;
+                //declare string.empty for container of gamerSelection
+                string gamerSelection = string.Empty;
                 #endregion
 
-                while (string.IsNullOrEmpty(gameOptionsModel.PlayerName))
+                while (string.IsNullOrEmpty(gameOptions.PlayerName))
                 {
                     Console.Clear();
                     Console.Write("Welcome to Rock, Paper, Scissors.\r\n\r\nPlease enter your nickname. ");
                     playerName = Console.ReadLine();
-                    gameOptionsModel.PlayerName = playerName;
+                    gameOptions.PlayerName = playerName;
                 }
 
-                Console.Write($"Welcome {gameOptionsModel.PlayerName}...\r\n\r\nHow many games do you wish to play? Please enter an odd number. ");
-                gameStr = Console.ReadLine();
-                
-                int.TryParse(gameStr, out numOfGames);
+                //Ask the gamer some options 
+                //Player vs Computer 
+                //Computer vs Computer 
+                Console.Write("\r\nPlease choose Game Option. \r\n Press [1] Player VS Computer \r\n Press [2] Computer VS Computer \r\n");
+                gamerSelection = Console.ReadLine();
 
-                while (numOfGames <= 0 || numOfGames % 2 == 0)
+                if (gamerSelection.Equals("1"))
                 {
-                    Console.Write($"{gameStr} is not a valid input.\r\nPlease enter the amount of games you wish to play. The number you enter must be an odd number.");
-                    gameStr = Console.ReadLine();
-                    int.TryParse(gameStr, out numOfGames);
+                    gameOptions.computerOnly = false;
+                    gameOptions = gameService.SetupGame(gameOptions);
+                    gameService.DrawGameBoard(gameOptions);
+                    Console.WriteLine("The rules is simple, you will be asked to make your selection. The computer will choose first. You can then enter Rock, Paper or Scissors.\r\n\r\nPress [Enter] to start the game.");
+                    Console.ReadLine();
                 }
-
-                gameOptionsModel.NumberOfGames = numOfGames;
-
-                gameOptionsModel = gameService.SetupGame(gameOptionsModel);
-                gameService.DrawGameBoard(gameOptionsModel);
-
-                Console.WriteLine("The rules are very simple, you will be asked to make your selection. The computer will choose first, this is so it cant cheat. You can then enter Rock, Paper or Scissors. The winner will be determined against the standard Rock, Paper, Scissors rule book.\r\n\r\nWhen you are ready press [Enter] to start the game.");
-                Console.ReadLine();
-
-
-                for (int i = 0; i < numOfGames; i++)
+                if (gamerSelection.Equals("2"))
                 {
-                    gameOptionsModel.PlayerName = playerName;
-                    gameOptionsModel = gameService.PlayRound(i, gameOptionsModel);
-
-                    if (!gameOptionsModel.AnotherRound)
-                    {
-                        break;
-                    }
+                    gameOptions.computerOnly = true;
+                    gameOptions = gameService.SetupGame(gameOptions);
+                    gameService.DrawGameBoard(gameOptions);
+                    Console.WriteLine("The two computer will play each other stay relax and enjoy the game.\r\n\r\nPress [Enter] to start the game.");
+                    Console.ReadLine();
                 }
-                    
-                gameService.DrawEnd(gameOptionsModel);
+
+                gameOptions = gameService.PlayRound(gameOptions);
+
+                gameOptions.PlayerName = playerName;
+                gameService.DrawEnd(gameOptions);
             }
             catch (Exception ex)
             {

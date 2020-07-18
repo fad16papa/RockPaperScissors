@@ -10,33 +10,41 @@ namespace RockPaperScissors.Application.Interface
     public interface IGameService
     {
         /// <summary>
+        /// Sets up a game board
+        /// </summary>
+        GameOptions SetupGame(GameOptions gameOptions);
+
+        /// <summary>
+        /// Draws the game board header
+        /// </summary>
+        void DrawGameBoard(GameOptions gameOptions);
+
+        /// <summary>
+        /// Draws the end of the game
+        /// </summary>
+        void DrawEnd(GameOptions gameOptions);
+
+        PlayerOption GetPlayerSelection();
+
+        /// <summary>
+        /// Gets the computer GetComputerPlayerOption selection
+        /// </summary>
+        /// <returns></returns>
+        PlayerOption GetComputerSelection();
+
+        /// <summary>
         /// Runs a player round
         /// </summary>
         /// <param name="roundNumber"></param>
         /// <returns></returns>
-        GameOptionsModel PlayRound(int roundNumber, GameOptionsModel gameOptionsModel);
+        GameOptions PlayRound(GameOptions gameOptions);
 
         /// <summary>
         /// Calculates the winner
         /// </summary>
         /// <param name="player"></param>
         /// <param name="computer"></param>
-        GameOptionsModel CalculateWinner(PlayerOptionModel player, PlayerOptionModel computer);
-
-        /// <summary>
-        /// Sets up a game board
-        /// </summary>
-        GameOptionsModel SetupGame(GameOptionsModel gameOptionsModel);
-
-        /// <summary>
-        /// Draws the game board header
-        /// </summary>
-        void DrawGameBoard(GameOptionsModel gameOptionsModel);
-
-        /// <summary>
-        /// Draws the end of the game
-        /// </summary>
-        void DrawEnd(GameOptionsModel gameOptionsModel);
+        GameOptions CalculateWinner(PlayerOption player, PlayerOption computer, GameOptions gameOptions);
 
         /// <summary>
         /// Simple format method to convert the score into a fixed length 
@@ -44,12 +52,6 @@ namespace RockPaperScissors.Application.Interface
         /// <param name="score"></param>
         /// <returns></returns>
         string FormatScore(int score);
-
-        /// <summary>
-        /// Gets the computer PlayerOptionModel selection
-        /// </summary>
-        /// <returns></returns>
-        PlayerOptionModel GetComputerPlayerOptionModel();
     }
 }
     
