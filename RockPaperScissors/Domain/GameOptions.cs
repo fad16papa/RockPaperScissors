@@ -35,5 +35,8 @@ namespace RockPaperScissors.Domain
 
         [DisplayName("Another Round")]
         public bool AnotherRound { get; set; }
+        
+        [DisplayName("Computer Only")]
+        public bool computerOnly { get; set; }
     }
 }

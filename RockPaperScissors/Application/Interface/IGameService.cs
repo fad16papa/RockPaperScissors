@@ -10,11 +10,34 @@ namespace RockPaperScissors.Application.Interface
     public interface IGameService
     {
         /// <summary>
+        /// Sets up a game board
+        /// </summary>
+        GameOptions SetupGame(GameOptions gameOptions);
+
+        /// <summary>
+        /// Draws the game board header
+        /// </summary>
+        void DrawGameBoard(GameOptions gameOptions);
+
+        /// <summary>
+        /// Draws the end of the game
+        /// </summary>
+        void DrawEnd(GameOptions gameOptions);
+
+        PlayerOption GetPlayerSelection();
+
+        /// <summary>
+        /// Gets the computer GetComputerPlayerOption selection
+        /// </summary>
+        /// <returns></returns>
+        PlayerOption GetComputerSelection();
+
+        /// <summary>
         /// Runs a player round
         /// </summary>
         /// <param name="roundNumber"></param>
         /// <returns></returns>
-        GameOptions PlayRound(int roundNumber, GameOptions gameOptionsModel);
+        GameOptions PlayRound(GameOptions gameOptions);
 
         /// <summary>
         /// Calculates the winner
@@ -24,32 +47,11 @@ namespace RockPaperScissors.Application.Interface
         GameOptions CalculateWinner(PlayerOption player, PlayerOption computer);
 
         /// <summary>
-        /// Sets up a game board
-        /// </summary>
-        GameOptions SetupGame(GameOptions gameOptionsModel);
-
-        /// <summary>
-        /// Draws the game board header
-        /// </summary>
-        void DrawGameBoard(GameOptions gameOptionsModel);
-
-        /// <summary>
-        /// Draws the end of the game
-        /// </summary>
-        void DrawEnd(GameOptions gameOptionsModel);
-
-        /// <summary>
         /// Simple format method to convert the score into a fixed length 
         /// </summary>
         /// <param name="score"></param>
         /// <returns></returns>
         string FormatScore(int score);
-
-        /// <summary>
-        /// Gets the computer GetComputerPlayerOption selection
-        /// </summary>
-        /// <returns></returns>
-        PlayerOption GetComputerPlayerOption();
     }
 }
     
