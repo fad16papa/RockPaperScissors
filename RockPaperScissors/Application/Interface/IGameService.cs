@@ -44,7 +44,7 @@ namespace RockPaperScissors.Application.Interface
         /// </summary>
         /// <param name="player"></param>
         /// <param name="computer"></param>
-        GameOptions CalculateWinner(PlayerOption player, PlayerOption computer);
+        GameOptions CalculateWinner(PlayerOption player, PlayerOption computer, GameOptions gameOptions);
 
         /// <summary>
         /// Simple format method to convert the score into a fixed length 

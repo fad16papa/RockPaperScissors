@@ -126,45 +126,75 @@ namespace RockPaperScissorsTest
             //Instantiate GameOptions
             GameOptions gameOptions = new GameOptions();
 
+            //if true the game will play computer vs computer 
+            //if false the game will play player vs computer
+            gameOptions.computerOnly = false;
+
             //Manual declare both plaayerOption and computerOption 
             //From PlayerOption Enum 
             //May change the value of PlayerOption from Rock, Paper or Scissors
             PlayerOption computerOption = PlayerOption.Scissors;
-            PlayerOption playerOption = PlayerOption.Scissors; 
+            PlayerOption playerOption = PlayerOption.Rock; 
 
-            if(playerOption == computerOption)
+            if (gameOptions.computerOnly)
             {
-                //Its a tie 
-                gameOptions.ComputerWins++;
-                gameOptions.PlayerWins++;
-
-                Assert.IsTrue(playerOption == computerOption);
-            }
-            else
-            {
-                //calculating the winner is simple, simply get the
-                //winning combination for the player
-                //if the result equals the computers roll then the player wins
-                //otherwise the computer wins.
-                // such as player calls rock, winners[rock] == scissors. If computer == scissors then 
-                // player wins otherwise the computer wins as the only other option is paper 
-                // remeber the options of the computer has a rock is negated in the tie selection
-                var result = winners[playerOption];
-                if (result == computerOption)
+                //tie game
+                if (playerOption == computerOption)
                 {
-                    //Congratulations you won beats computer
-                    gameOptions.PlayerWins++;
-
-                    Assert.IsTrue(result == computerOption);
+                    
+                    gameOptions.FirstComputerWins++;
+                    gameOptions.SecondComputerWins++;
+                    Assert.IsTrue(playerOption == computerOption);
                 }
                 else
                 {
-                    //Computer Wins beats player 
-                    gameOptions.ComputerWins++;
-
-                    Assert.IsTrue(result != computerOption);
+                    //if the result equals the computers roll then the player wins
+                    //otherwise the computer wins.
+                    var result = winners[playerOption];
+                    if (result == computerOption)
+                    {
+                        gameOptions.FirstComputerWins++;
+                        Assert.IsTrue(result == computerOption);
+                    }
+                    else
+                    {
+                        gameOptions.SecondComputerWins++;
+                        Assert.IsTrue(result == computerOption);
+                    }
                 }
             }
+            else
+            {
+                //tie game
+                if (playerOption == computerOption)
+                {
+                    gameOptions.PlayerWins++;
+                    gameOptions.ComputerWins++;
+
+                    Assert.IsTrue(playerOption == computerOption);
+                }
+                else
+                {
+                    //if the result equals the computers roll then the player wins
+                    //otherwise the computer wins.
+                    var result = winners[playerOption];
+                    if (result == computerOption)
+                    {
+                        gameOptions.PlayerWins++;
+                        Assert.IsTrue(result == computerOption);
+                    }
+                    else
+                    {
+                        gameOptions.ComputerWins++;
+                        Assert.IsTrue(result == computerOption);
+                    }
+                }
+            }
+        }
+
+        [TestMethod]
+        public void PlayRound()
+        { 
         }
     }
 }

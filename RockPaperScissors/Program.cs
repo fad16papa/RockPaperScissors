@@ -39,7 +39,7 @@ namespace RockPaperScissors
                 //declare string.empty totalGameRound for cointaner of total game round specify by player
                 string totalGameRound = string.Empty;
 
-                //declaret string.empty for container of gamerSelection
+                //declare string.empty for container of gamerSelection
                 string gamerSelection = string.Empty;
                 #endregion
 
@@ -59,7 +59,6 @@ namespace RockPaperScissors
 
                 if (gamerSelection.Equals("1"))
                 {
-                    gameOptions.PlayerName = playerName;
                     gameOptions.computerOnly = false;
                     gameOptions = gameService.SetupGame(gameOptions);
                     gameService.DrawGameBoard(gameOptions);
@@ -68,7 +67,6 @@ namespace RockPaperScissors
                 }
                 if (gamerSelection.Equals("2"))
                 {
-                    gameOptions.PlayerName = playerName;
                     gameOptions.computerOnly = true;
                     gameOptions = gameService.SetupGame(gameOptions);
                     gameService.DrawGameBoard(gameOptions);
@@ -76,9 +74,7 @@ namespace RockPaperScissors
                     Console.ReadLine();
                 }
 
-                gameOptions.PlayerName = playerName;
                 gameOptions = gameService.PlayRound(gameOptions);
-
 
                 gameOptions.PlayerName = playerName;
                 gameService.DrawEnd(gameOptions);
