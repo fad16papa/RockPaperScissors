@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RockPaperScissors.Domain
 {
-    public class GameOptionsModel
+    public class GameOptions
     {
         [DisplayName("Computer Wins")]
         public int ComputerWins { get; set; }

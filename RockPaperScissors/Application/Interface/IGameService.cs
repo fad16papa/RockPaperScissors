@@ -14,29 +14,29 @@ namespace RockPaperScissors.Application.Interface
         /// </summary>
         /// <param name="roundNumber"></param>
         /// <returns></returns>
-        GameOptionsModel PlayRound(int roundNumber, GameOptionsModel gameOptionsModel);
+        GameOptions PlayRound(int roundNumber, GameOptions gameOptionsModel);
 
         /// <summary>
         /// Calculates the winner
         /// </summary>
         /// <param name="player"></param>
         /// <param name="computer"></param>
-        GameOptionsModel CalculateWinner(PlayerOptionModel player, PlayerOptionModel computer);
+        GameOptions CalculateWinner(PlayerOption player, PlayerOption computer);
 
         /// <summary>
         /// Sets up a game board
         /// </summary>
-        GameOptionsModel SetupGame(GameOptionsModel gameOptionsModel);
+        GameOptions SetupGame(GameOptions gameOptionsModel);
 
         /// <summary>
         /// Draws the game board header
         /// </summary>
-        void DrawGameBoard(GameOptionsModel gameOptionsModel);
+        void DrawGameBoard(GameOptions gameOptionsModel);
 
         /// <summary>
         /// Draws the end of the game
         /// </summary>
-        void DrawEnd(GameOptionsModel gameOptionsModel);
+        void DrawEnd(GameOptions gameOptionsModel);
 
         /// <summary>
         /// Simple format method to convert the score into a fixed length 
@@ -46,10 +46,10 @@ namespace RockPaperScissors.Application.Interface
         string FormatScore(int score);
 
         /// <summary>
-        /// Gets the computer PlayerOptionModel selection
+        /// Gets the computer GetComputerPlayerOption selection
         /// </summary>
         /// <returns></returns>
-        PlayerOptionModel GetComputerPlayerOptionModel();
+        PlayerOption GetComputerPlayerOption();
     }
 }
     

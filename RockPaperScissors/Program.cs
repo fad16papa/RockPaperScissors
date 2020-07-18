@@ -31,7 +31,7 @@ namespace RockPaperScissors
                 GameService gameService = new GameService();
 
                 //Instantiate GameOptionsModel
-                GameOptionsModel gameOptionsModel = new GameOptionsModel();
+                GameOptions gameOptionsModel = new GameOptions();
 
                 //declare string.empty playerName
                 string playerName = string.Empty;
@@ -66,7 +66,7 @@ namespace RockPaperScissors
                 gameOptionsModel = gameService.SetupGame(gameOptionsModel);
                 gameService.DrawGameBoard(gameOptionsModel);
 
-                Console.WriteLine("The rules are very simple, you will be asked to make your selection. The computer will choose first, this is so it cant cheat. You can then enter Rock, Paper or Scissors. The winner will be determined against the standard Rock, Paper, Scissors rule book.\r\n\r\nWhen you are ready press [Enter] to start the game.");
+                Console.WriteLine("The rules is simple, you will be asked to make your selection. The computer will choose first. You can then enter Rock, Paper or Scissors.\r\n\r\nPress [Enter] to start the game.");
                 Console.ReadLine();
 
 

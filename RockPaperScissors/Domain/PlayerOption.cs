@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RockPaperScissors.Domain
 {
-    public enum PlayerOptionModel : int
+    public enum PlayerOption : int
     {
         Rock = 0,
         Paper = 1,

@@ -48,8 +48,8 @@
   <ItemGroup>
     <Compile Include="Application\Interface\IGameService.cs" />
     <Compile Include="Application\Respository\GameService.cs" />
-    <Compile Include="Domain\GameOptionsModel.cs" />
-    <Compile Include="Domain\PlayerOptionModel.cs" />
+    <Compile Include="Domain\GameOptions.cs" />
+    <Compile Include="Domain\PlayerOption.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
