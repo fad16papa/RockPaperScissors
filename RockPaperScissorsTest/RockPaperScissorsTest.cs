@@ -58,19 +58,22 @@ namespace RockPaperScissorsTest
         //
         #endregion
 
+        /// <summary>
+        /// This test method will check and compare the player selection 
+        /// </summary>
         [TestMethod]
         public void CheckPlayerSelection()
         {
-            //Instantiate GameOptionsModel
-            GameOptionsModel gameOptionsModel = new GameOptionsModel();
-
             // R - Rock, P - Paper, S - Scissors, Q - Quit
             PlayerOptionModel playerChoice = PlayerOptionModel.Invalid;
 
             //declare string choice to check the player selection 
             //compare the string choice base to PlayerOptionModel enum model
             //using switch case 
-            string choice = "r";
+            string choice = "paper";
+
+            //declare bool if the user selected q/quit
+            bool quit = false;
 
             //use while loop 
             //if the playerChoice will be equals to invalid continue loop 
@@ -93,16 +96,44 @@ namespace RockPaperScissorsTest
                         break;
                     case "quit":
                     case "q":
+                        quit = true;
                         break;
 
                     default:
-                        // choice is not valid
+                        Console.WriteLine($"{choice} is not a valid. Please try again.\r\n");
                         break;
+                }
+
+                //exit the loop if the player selected q/quit
+                if (quit)
+                {
+                    break;
                 }
             }
 
-            //Change the PlayerOptionModel to Rock, Paper and/or scissors to check if the assert result is correct
-            Assert.AreEqual(playerChoice, PlayerOptionModel.Rock);
+            //Nested if for assert results 
+            if (playerChoice != PlayerOptionModel.Invalid)
+            {
+                if (choice.Equals("r") || choice.Equals("rock"))
+                {
+                    Assert.AreEqual(playerChoice, PlayerOptionModel.Rock);
+                }
+
+                if (choice.Equals("p") || choice.Equals("paper"))
+                {
+                    Assert.AreEqual(playerChoice, PlayerOptionModel.Paper);
+                }
+
+                if (choice.Equals("s") || choice.Equals("scissors"))
+                {
+                    Assert.AreEqual(playerChoice, PlayerOptionModel.Scissors);
+                }
+            }
+
+            if (choice.Equals("q") || choice.Equals("quit"))
+            {
+                Assert.IsTrue(quit);
+            }
         }
 
         [TestMethod]

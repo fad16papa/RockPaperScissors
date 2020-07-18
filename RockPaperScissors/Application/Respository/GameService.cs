@@ -117,7 +117,7 @@ namespace RockPaperScissors.Application.Respository
             while (playerChoice == PlayerOptionModel.Invalid)
             {
 
-                Console.Write("Please choose. R - Rock, P - Paper, S - Scissors, Q - Quit ");
+                Console.Write("Please choose. R/r - Rock, P/p - Paper, S/s - Scissors, Q/q - Quit ");
                 string choice = Console.ReadLine();
                 switch (choice.ToLowerInvariant().Trim())
                 {
