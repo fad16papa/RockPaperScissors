@@ -50,6 +50,7 @@
     <Compile Include="Application\Respository\GameService.cs" />
     <Compile Include="Domain\GameOptions.cs" />
     <Compile Include="Domain\PlayerOption.cs" />
+    <Compile Include="Helper\EnumHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -10,24 +10,39 @@ namespace RockPaperScissors.Application.Interface
     public interface IGameService
     {
         /// <summary>
+        /// This will display the menu options
+        /// </summary>
+        /// <param name="AnotherRound"></param>
+        /// <returns></returns>
+        GameOptions GameMenu(bool AnotherRound, string playerName);
+
+        /// <summary>
         /// Sets up a game board
         /// </summary>
+        /// <param name="gameOptions"></param>
+        /// <returns></returns>
         GameOptions SetupGame(GameOptions gameOptions);
 
         /// <summary>
         /// Draws the game board header
         /// </summary>
+        /// <param name="gameOptions"></param>
         void DrawGameBoard(GameOptions gameOptions);
 
         /// <summary>
         /// Draws the end of the game
         /// </summary>
+        /// <param name="gameOptions"></param>
         void DrawEnd(GameOptions gameOptions);
 
+        /// <summary>
+        /// Gets the player selection
+        /// </summary>
+        /// <returns></returns>
         PlayerOption GetPlayerSelection();
 
         /// <summary>
-        /// Gets the computer GetComputerPlayerOption selection
+        /// Gets the computer selection
         /// </summary>
         /// <returns></returns>
         PlayerOption GetComputerSelection();
@@ -37,7 +52,7 @@ namespace RockPaperScissors.Application.Interface
         /// </summary>
         /// <param name="roundNumber"></param>
         /// <returns></returns>
-        GameOptions PlayRound(GameOptions gameOptions);
+        GameOptions PlayGame(GameOptions gameOptions);
 
         /// <summary>
         /// Calculates the winner

@@ -42,42 +42,47 @@ namespace RockPaperScissors
                 //declare string.empty for container of gamerSelection
                 string gamerSelection = string.Empty;
                 #endregion
+                
+                gameOptions.AnotherRound = true;
 
-                while (string.IsNullOrEmpty(gameOptions.PlayerName))
+                while(gameOptions.AnotherRound)
                 {
-                    Console.Clear();
-                    Console.Write("Welcome to Rock, Paper, Scissors.\r\n\r\nPlease enter your nickname. ");
-                    playerName = Console.ReadLine();
-                    gameOptions.PlayerName = playerName;
+                    while (string.IsNullOrEmpty(gameOptions.PlayerName))
+                    {
+                        Console.Clear();
+                        Console.Write("Welcome to Rock, Paper, Scissors.\r\n\r\nPlease enter your nickname. ");
+                        playerName = Console.ReadLine();
+                        gameOptions.PlayerName = playerName;
+                    }
+
+                    //this will display the game menu 
+                    gameOptions = gameService.GameMenu(gameOptions.AnotherRound, gameOptions.PlayerName);
+
+                    //this will do the main computation of rock paper and scissors
+                    //this will check and compare all the selection 
+                    //Player VS Computer 
+                    //Computer VS Computer
+                    gameOptions = gameService.PlayGame(gameOptions);
+                    //gameOptions.PlayerName = playerName;
+
+                    //this will display the final score board
+                    gameService.DrawEnd(gameOptions);
+
+                    Console.Write("\r\nPlease choose Game Option. \r\n Press [1] to try again \r\n Press any key except [1] to exit the game \r\n");
+                    gamerSelection = Console.ReadLine();
+
+                    if (gamerSelection.Equals("1"))
+                    {
+                        Console.Clear();
+                        gameOptions.AnotherRound = true;
+                        continue;
+                    }
+                    else
+                    {
+                        gameOptions.AnotherRound = false;
+                        break;
+                    }
                 }
-
-                //Ask the gamer some options 
-                //Player vs Computer 
-                //Computer vs Computer 
-                Console.Write("\r\nPlease choose Game Option. \r\n Press [1] Player VS Computer \r\n Press [2] Computer VS Computer \r\n");
-                gamerSelection = Console.ReadLine();
-
-                if (gamerSelection.Equals("1"))
-                {
-                    gameOptions.computerOnly = false;
-                    gameOptions = gameService.SetupGame(gameOptions);
-                    gameService.DrawGameBoard(gameOptions);
-                    Console.WriteLine("The rules is simple, you will be asked to make your selection. The computer will choose first. You can then enter Rock, Paper or Scissors.\r\n\r\nPress [Enter] to start the game.");
-                    Console.ReadLine();
-                }
-                if (gamerSelection.Equals("2"))
-                {
-                    gameOptions.computerOnly = true;
-                    gameOptions = gameService.SetupGame(gameOptions);
-                    gameService.DrawGameBoard(gameOptions);
-                    Console.WriteLine("The two computer will play each other stay relax and enjoy the game.\r\n\r\nPress [Enter] to start the game.");
-                    Console.ReadLine();
-                }
-
-                gameOptions = gameService.PlayRound(gameOptions);
-
-                gameOptions.PlayerName = playerName;
-                gameService.DrawEnd(gameOptions);
             }
             catch (Exception ex)
             {
