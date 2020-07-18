@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Text;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using RockPaperScissors;
 using RockPaperScissors.Domain;
-using System.Runtime.InteropServices;
+using RockPaperScissors.Helper;
+using RockPaperScissors.Application.Respository;
 
 namespace RockPaperScissorsTest
 {
@@ -14,6 +13,55 @@ namespace RockPaperScissorsTest
     [TestClass]
     public class RockPaperScissorsTest
     {
+        [TestMethod]
+        public void Drawboard()
+        {
+            GameOptions gameOptions = new GameOptions();
+            gameOptions.FirstComputerWins++;
+            gameOptions.SecondComputerWins++;
+            gameOptions.PlayerName = "fad";
+            gameOptions.ScoreXAxis = 85;
+            gameOptions.ScoreYAxis = 1;
+            gameOptions.PlayerWins++;
+            gameOptions.ComputerWins++;
+            gameOptions.computerOnly = true;
+
+            Console.Clear();
+            Console.SetCursorPosition(0, 0);
+
+            for (int i = 0; i < Console.WindowWidth; i++)
+            {
+                Console.Write("-");
+            }
+
+            Console.Write("ROCK, PAPER, SCISSORS");
+            Console.SetCursorPosition(gameOptions.ScoreXAxis, gameOptions.ScoreYAxis);
+            if (gameOptions.computerOnly)
+            {
+                Console.Write($"Scores: Computer1: {FormatScore(gameOptions.FirstComputerWins)} Computer2: {FormatScore(gameOptions.SecondComputerWins)} ");
+            }
+            else
+            {
+                Console.Write($"Scores: {gameOptions.PlayerName}: {FormatScore(gameOptions.PlayerWins)}  Computer: {FormatScore(gameOptions.ComputerWins)} ");
+            }
+
+            Console.SetCursorPosition(0, gameOptions.ScoreYAxis + 1);
+
+            for (int i = 0; i < Console.WindowWidth; i++)
+            {
+                Console.Write("-");
+            }
+
+            Console.SetCursorPosition(0, gameOptions.ScoreYAxis + 2);
+        }
+
+        [TestMethod]
+        public string FormatScore(int score)
+        {
+            string format = "   " + score.ToString();
+            return format.Substring(format.Length - 2);
+        }
+
         /// <summary>
         /// This test method will check and compare the player selection 
         /// </summary>
@@ -72,7 +120,7 @@ namespace RockPaperScissorsTest
                 if (choice.Equals("s") || choice.Equals("scissors"))
                 {
                     Assert.AreEqual(playerChoice, PlayerOption.Scissors);
-                }
+                } 
             }
         }
 
@@ -80,34 +128,25 @@ namespace RockPaperScissorsTest
         /// This test method will check and compare the computer selection 
         /// </summary>
         [TestMethod]
-        public void GetComputerSelection()
+        public PlayerOption GetComputerSelection()
         {
-            //declare random property
-            Random random = new Random();
+            PlayerOption computerSelection = EnumHelper.Of<PlayerOption>();
 
-            int range = random.Next(0, 3);
-
-            PlayerOption computerChoice;
-
-            //Nested if checking the range and PlayerOption
-            //if its rock, paper or scissors 
-            if (range == (int)PlayerOption.Rock)
+            while (computerSelection == PlayerOption.Invalid)
             {
-                computerChoice = PlayerOption.Rock;
-                Assert.AreEqual(computerChoice, PlayerOption.Rock);
+                if (computerSelection != PlayerOption.Invalid)
+                {
+                    break;
+                }
+                else
+                {
+                    computerSelection = EnumHelper.Of<PlayerOption>();
+                }
             }
+            Console.WriteLine(computerSelection);
+            Assert.AreNotEqual(computerSelection, PlayerOption.Invalid);
 
-            if (range == (int)PlayerOption.Paper)
-            {
-                computerChoice = PlayerOption.Paper;
-                Assert.AreEqual(computerChoice, PlayerOption.Paper);
-            }
-
-            if (range == (int)PlayerOption.Scissors)
-            {
-                computerChoice = PlayerOption.Scissors;
-                Assert.AreEqual(computerChoice, PlayerOption.Scissors);
-            }
+            return computerSelection;
         }
 
         [TestMethod]
@@ -130,47 +169,55 @@ namespace RockPaperScissorsTest
             //if false the game will play player vs computer
             gameOptions.computerOnly = false;
 
-            //Manual declare both plaayerOption and computerOption 
-            //From PlayerOption Enum 
-            //May change the value of PlayerOption from Rock, Paper or Scissors
-            PlayerOption computerOption = PlayerOption.Scissors;
-            PlayerOption playerOption = PlayerOption.Rock; 
-
+          
             if (gameOptions.computerOnly)
             {
+                PlayerOption firstComputerChoice = GetComputerSelection();
+                Console.WriteLine($"The computer choosed: {firstComputerChoice}");
+
+                PlayerOption secondComputerChoice = GetComputerSelection();
+                Console.WriteLine($"The computer choosed: {secondComputerChoice}");
+
+
                 //tie game
-                if (playerOption == computerOption)
+                if (firstComputerChoice == secondComputerChoice)
                 {
                     
                     gameOptions.FirstComputerWins++;
                     gameOptions.SecondComputerWins++;
-                    Assert.IsTrue(playerOption == computerOption);
+                    Console.WriteLine($"The game is a tie.");
+                    Assert.IsTrue(firstComputerChoice == secondComputerChoice);
                 }
                 else
                 {
                     //if the result equals the computers roll then the player wins
                     //otherwise the computer wins.
-                    var result = winners[playerOption];
-                    if (result == computerOption)
+                    var result = winners[firstComputerChoice];
+                    if (result == secondComputerChoice)
                     {
                         gameOptions.FirstComputerWins++;
-                        Assert.IsTrue(result == computerOption);
+                        Console.WriteLine($"Computer1 wins {firstComputerChoice} beats {secondComputerChoice}.");
+                        Assert.IsTrue(result == secondComputerChoice);
                     }
                     else
                     {
                         gameOptions.SecondComputerWins++;
-                        Assert.IsTrue(result == computerOption);
+                        Console.WriteLine($"Computer2 wins {secondComputerChoice} beats {firstComputerChoice}.");
+                        Assert.IsTrue(result == secondComputerChoice);
                     }
                 }
             }
             else
             {
+                PlayerOption computerOption = EnumHelper.Of<PlayerOption>();
+                PlayerOption playerOption = EnumHelper.Of<PlayerOption>();
+
                 //tie game
                 if (playerOption == computerOption)
                 {
                     gameOptions.PlayerWins++;
                     gameOptions.ComputerWins++;
-
+                    Console.WriteLine($"The game is a tie.");
                     Assert.IsTrue(playerOption == computerOption);
                 }
                 else
@@ -181,20 +228,67 @@ namespace RockPaperScissorsTest
                     if (result == computerOption)
                     {
                         gameOptions.PlayerWins++;
+                        Console.WriteLine($"Congratulations you won. {playerOption} beats {computerOption}.");
                         Assert.IsTrue(result == computerOption);
                     }
                     else
                     {
                         gameOptions.ComputerWins++;
-                        Assert.IsTrue(result == computerOption);
+                        Console.WriteLine($"Computer Wins. {computerOption} beats {playerOption}.");
+                        Assert.IsTrue(result != computerOption);
                     }
                 }
             }
         }
 
         [TestMethod]
-        public void PlayRound()
-        { 
+        public void PlayGame()
+        {
+            GameOptions gameOptions = new GameOptions();
+            GameService gameService = new GameService();
+
+            if (gameOptions.computerOnly)
+            {
+                //Calculate who will be the winner computer vs computer
+                PlayerOption firstComputerChoice = GetComputerSelection();
+                Console.WriteLine($"The computer choosed: {firstComputerChoice}");
+
+                PlayerOption secondComputerChoice = GetComputerSelection();
+                Console.WriteLine($"The computer choosed: {secondComputerChoice}");
+
+                gameOptions = gameService.CalculateWinner(firstComputerChoice, secondComputerChoice, gameOptions);
+                gameOptions.computerOnly = true;
+
+                if(gameOptions.FirstComputerWins != 0)
+                {
+                    Assert.AreEqual(gameOptions.FirstComputerWins, 1);
+                }
+                if(gameOptions.SecondComputerWins != 0)
+                {
+                    Assert.AreEqual(gameOptions.SecondComputerWins, 1);
+                }
+            }
+            else
+            {
+                //Calaculate who will be the winner player vs computer 
+                PlayerOption computerChoice = GetComputerSelection();
+                Console.WriteLine($"The computer choosed: {computerChoice}");
+
+                PlayerOption playerChoice = GetComputerSelection();
+                Console.WriteLine($"You choosed: {playerChoice}");
+
+                gameOptions = gameService.CalculateWinner(playerChoice, computerChoice, gameOptions);
+                gameOptions.computerOnly = false;
+
+                if (gameOptions.PlayerWins != 0)
+                {
+                    Assert.AreEqual(gameOptions.PlayerWins, 1);
+                }
+                if (gameOptions.ComputerWins != 0)
+                {
+                    Assert.AreEqual(gameOptions.ComputerWins, 1);
+                }
+            }
         }
     }
 }

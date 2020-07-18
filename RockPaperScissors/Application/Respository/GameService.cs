@@ -1,27 +1,77 @@
 ﻿using RockPaperScissors.Application.Interface;
 using RockPaperScissors.Domain;
+using RockPaperScissors.Helper;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RockPaperScissors.Application.Respository
 {
     public class GameService : IGameService
     {
         /// <summary>
+        /// This will display the menu options
+        /// </summary>
+        /// <param name="AnotherRound"></param>
+        /// <returns></returns>
+        public GameOptions GameMenu(bool AnotherRound, string playerName)
+        {
+            //Instantiate GameService
+            GameService gameService = new GameService();
+
+            //Instantiate GameOptionsModel
+            GameOptions gameOptions = new GameOptions();
+            gameOptions.PlayerName = playerName;
+
+            while (AnotherRound)
+            {
+                //Ask the gamer some options 
+                //Player vs Computer 
+                //Computer vs Computer 
+                Console.Write("\r\nPlease choose Game Option. \r\n Press [1] Player VS Computer \r\n Press [2] Computer VS Computer \r\n");
+                string gamerSelection = Console.ReadLine();
+
+                if (gamerSelection.Equals("1"))
+                {
+                    gameOptions.computerOnly = false;
+                    gameOptions = gameService.SetupGame(gameOptions);
+                    gameService.DrawGameBoard(gameOptions);
+                    Console.WriteLine("The rules is simple, you will be asked to make your selection. The computer will choose first. You can then enter Rock, Paper or Scissors.\r\n\r\nPress [Enter] to start the game.");
+                    Console.ReadLine();
+                    gameOptions.AnotherRound = false;
+                    break;
+                }
+                if (gamerSelection.Equals("2"))
+                {
+                    gameOptions.computerOnly = true;
+                    gameOptions = gameService.SetupGame(gameOptions);
+                    gameService.DrawGameBoard(gameOptions);
+                    Console.WriteLine("The two computer will play each other stay relax and enjoy the game.\r\n\r\nPress [Enter] to start the game.");
+                    Console.ReadLine();
+                    gameOptions.AnotherRound = false;
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine($"{gamerSelection} is not a valid. Please [Enter] try again.\r\n");
+                    Console.ReadLine();
+                }
+            }
+
+            return gameOptions;
+        }
+
+        /// <summary>
         /// Sets up a game board
         /// </summary>
         public GameOptions SetupGame(GameOptions gameOptions)
         {
             /*  Template
-            *  Score: {playerName}: {playerWins, 2 spaces}      Computer: {computerWins, 2 spaces} 
+            *  Score: {playerName}: {playerWins, 2 spaces}   Computer: {computerWins, 2 spaces} 
             */
             int requiredWidth = 0;
             if (gameOptions.computerOnly)
             {
-                requiredWidth = "Score: ".Length +
+               requiredWidth = "Score: ".Length +
                   "Computer".Length +
                   1 +
                   1 +
@@ -82,7 +132,7 @@ namespace RockPaperScissors.Application.Respository
             }
             else
             {
-                Console.Write($"Scores: {gameOptions.PlayerName} Player: {FormatScore(gameOptions.PlayerWins)}  Computer: {FormatScore(gameOptions.ComputerWins)} ");
+                Console.Write($"Scores: {gameOptions.PlayerName}: {FormatScore(gameOptions.PlayerWins)}  Computer: {FormatScore(gameOptions.ComputerWins)} ");
             }
             
             Console.SetCursorPosition(0, gameOptions.ScoreYAxis + 1);
@@ -128,13 +178,10 @@ namespace RockPaperScissors.Application.Respository
             {
                 Console.WriteLine("\r\nYou lost! Better luck next time!.");
             }
-
-            Console.Write("\r\nPress [Enter] to finish the game.");
-            Console.ReadLine();
         }
 
         /// <summary>
-        /// Gets the current player PlayerOption selection
+        /// Gets the player selection
         /// </summary>
         /// <returns></returns>
         public PlayerOption GetPlayerSelection()
@@ -169,16 +216,26 @@ namespace RockPaperScissors.Application.Respository
         }
 
         /// <summary>
-        /// Gets the computer PlayerOption selection
+        /// Gets the computer selection
         /// </summary>
         /// <returns></returns>
         public PlayerOption GetComputerSelection()
         {
-            Random random = new Random();
+            PlayerOption computerSelection = EnumHelper.Of<PlayerOption>();
+            
+            while(computerSelection == PlayerOption.Invalid)
+            {
+                if (computerSelection != PlayerOption.Invalid)
+                {
+                    break;
+                }
+                else
+                {
+                    computerSelection = EnumHelper.Of<PlayerOption>();
+                }
+            }
 
-            int range = random.Next(0, 3);
-
-            return (PlayerOption)range;
+            return computerSelection;
         }
 
         /// <summary>
@@ -186,23 +243,24 @@ namespace RockPaperScissors.Application.Respository
         /// </summary>
         /// <param name="roundNumber"></param>
         /// <returns></returns>
-        public GameOptions PlayRound(GameOptions gameOptions)
+        public GameOptions PlayGame(GameOptions gameOptions)
         {
-
             DrawGameBoard(gameOptions);
 
             if (gameOptions.computerOnly)
             {
                 //Calculate who will be the winner computer vs computer
                 PlayerOption firstComputerChoice = GetComputerSelection();
-                PlayerOption secondComputerChoice = GetComputerSelection();               
+                Console.WriteLine($"The computer choosed: {firstComputerChoice}");
+
+                PlayerOption secondComputerChoice = GetComputerSelection();
+                Console.WriteLine($"The computer choosed: {secondComputerChoice}");
 
                 gameOptions = CalculateWinner(firstComputerChoice, secondComputerChoice, gameOptions);
                 gameOptions.computerOnly = true;
             }
             else
             { 
-
                 //Calaculate who will be the winner player vs computer 
                 PlayerOption computerChoice = GetComputerSelection();
                 Console.WriteLine($"The computer choosed: {computerChoice}");
@@ -267,6 +325,7 @@ namespace RockPaperScissors.Application.Respository
             }
             else
             {
+
                 //tie game
                 if (playerOption == computerOption)
                 {
