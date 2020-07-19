@@ -7,3 +7,4 @@ D:\.NetCore\RockPaperScissors\RockPaperScissors\obj\Debug\RockPaperScissors.cspr
 D:\.NetCore\RockPaperScissors\RockPaperScissors\obj\Debug\RockPaperScissors.csproj.CopyComplete
 D:\.NetCore\RockPaperScissors\RockPaperScissors\obj\Debug\RockPaperScissors.exe
 D:\.NetCore\RockPaperScissors\RockPaperScissors\obj\Debug\RockPaperScissors.pdb
+D:\.NetCore\RockPaperScissors\RockPaperScissors\obj\Debug\RockPaperScissors.csprojAssemblyReference.cache
