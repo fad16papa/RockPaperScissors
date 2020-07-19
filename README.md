@@ -23,7 +23,7 @@ Just follow the step by step prompt message in installation process.
 
 ## Deployment
 
-Just run the 
+Add additional notes about how to deploy this on a live system
 
 ## Built With
 
