@@ -1,6 +1,8 @@
-# Project Title
+# Rock Paper Scissors Game
 
-One Paragraph of project description goes here
+is a hand game usually played between two people, in which each player simultaneously forms one of three shapes with an outstretched hand. These shapes are "rock" (a closed fist), "paper" (a flat hand), and "scissors" (a fist with the index finger and middle finger extended, forming a V). "Scissors" is identical to the two-fingered V sign (also indicating "victory" or "peace") except that it is pointed horizontally instead of being held upright in the air. A simultaneous, zero-sum game, it has only two possible outcomes: a draw, or a win for one player and a loss for the other.
+
+https://en.wikipedia.org/wiki/Rock_paper_scissors
 
 ## Getting Started
 
@@ -8,53 +10,20 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+Make sure to have .Net Framework run time version 4.6 installed in your machine. 
+Incase if you don't have you may download the .Net Framework run time version 4.6 at official Microsoft web site. 
 
 ```
-Give examples
+Kindly visit the link to download https://dotnet.microsoft.com/download/dotnet-framework/net46 
 ```
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
+Just follow the step by step prompt message in installation process. 
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
+Just run the 
 
 ## Built With
 
