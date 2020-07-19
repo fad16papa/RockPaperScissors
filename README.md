@@ -6,16 +6,15 @@ https://en.wikipedia.org/wiki/Rock_paper_scissors
 
 ## Getting Started
 
-Please download the source code and installer wizard at [fad16papa](https://github.com/fad16papa/RockPaperScissors)
+Please download or git clone the source code and installer wizard at [fad16papa](https://github.com/fad16papa/RockPaperScissors)
 
 ### Prerequisites
 
 Make sure to have .Net Framework run time version 4.6 installed in your machine. 
 Incase if you don't have you may download the .Net Framework run time version 4.6 at official Microsoft web site. 
 
-```
-Kindly visit the link to download https://dotnet.microsoft.com/download/dotnet-framework/net46 
-```
+Kindly visit the link to download [.Net Framework](https://dotnet.microsoft.com/download/dotnet-framework/net46)
+
 
 ### Installing
 
@@ -41,11 +40,11 @@ Rock Paper and Scissors Version 1.0.0
 
 ## Authors
 
-* **Francis A. Decena** - *Initial work* - [fadthegreate](https://github.com/fad16papa)
+* **Francis A. Decena** - *Initial work* - [fadthegreat](https://github.com/fad16papa)
 
 ## License
 
-This project is licensed under Francis Decena. This is for code assessment view only.
+This project is licensed under Francis Decena. This is for code assessment only.
 
 ## Acknowledgments
 
