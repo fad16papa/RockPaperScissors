@@ -6,7 +6,7 @@ https://en.wikipedia.org/wiki/Rock_paper_scissors
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+Please download the source code and installer wizard at [fad16papa](https://github.com/fad16papa/RockPaperScissors)
 
 ### Prerequisites
 
@@ -27,30 +27,28 @@ Add additional notes about how to deploy this on a live system
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+* [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) - IDE 
+* [.Net Framework 4.6](https://dotnet.microsoft.com/download/dotnet-framework/net46) - .Net Run Time and Developer Pack
+* [Git Hub](https://github.com/fad16papa/RockPaperScissors) - Code Repository
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+Please read [CONTRIBUTING.md](https://github.com/fad16papa/RockPaperScissors/blob/Francis/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+Rock Paper and Scissors Version 1.0.0
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+* **Francis A. Decena** - *Initial work* - [fadthegreate](https://github.com/fad16papa)
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under Francis Decena. This is for code assessment view only.
 
 ## Acknowledgments
 
-* Hat tip to anyone whose code was used
+* Mavericks Consulting https://www.mavericks-consulting.com/
+* Coding assessment software developer
 * Inspiration
-* etc
