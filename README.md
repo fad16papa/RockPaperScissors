@@ -2,7 +2,7 @@
 
 is a hand game usually played between two people, in which each player simultaneously forms one of three shapes with an outstretched hand. These shapes are "rock" (a closed fist), "paper" (a flat hand), and "scissors" (a fist with the index finger and middle finger extended, forming a V). "Scissors" is identical to the two-fingered V sign (also indicating "victory" or "peace") except that it is pointed horizontally instead of being held upright in the air. A simultaneous, zero-sum game, it has only two possible outcomes: a draw, or a win for one player and a loss for the other.
 
-https://en.wikipedia.org/wiki/Rock_paper_scissors
+For more information kindly visit [Wiki-RockPaperScissor](https://en.wikipedia.org/wiki/Rock_paper_scissors)
 
 ## Getting Started
 
@@ -15,10 +15,9 @@ Incase if you don't have you may download the .Net Framework run time version 4.
 
 Kindly visit the link to download [.Net Framework](https://dotnet.microsoft.com/download/dotnet-framework/net46)
 
-
 ### Installing
 
-Just follow the step by step prompt message in installation process. 
+Just follow the step by step prompt message in installation wizard
 
 ## Deployment
 
