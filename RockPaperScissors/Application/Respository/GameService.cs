@@ -207,6 +207,7 @@ namespace RockPaperScissors.Application.Respository
                         break;
 
                     default:
+                        //if the player choose selection it will loop unitl the player select the valid selection.
                         Console.WriteLine($"{choice} is not a valid. Please try again.\r\n");
                         break;
                 }
@@ -283,8 +284,10 @@ namespace RockPaperScissors.Application.Respository
         /// <summary>
         /// Calculates the winner
         /// </summary>
-        /// <param name="player"></param>
-        /// <param name="computer"></param>
+        /// <param name="playerOption"></param>
+        /// <param name="computerOption"></param>
+        /// <param name="gameOptions"></param>
+        /// <returns></returns>
         public GameOptions CalculateWinner(PlayerOption playerOption, PlayerOption computerOption, GameOptions gameOptions)
         {
             /// <summary>

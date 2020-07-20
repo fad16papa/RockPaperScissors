@@ -26,8 +26,8 @@ namespace RockPaperScissorsTest
             gameOptions.ComputerWins++;
             gameOptions.computerOnly = true;
 
-            Console.Clear();
-            Console.SetCursorPosition(0, 0);
+            //Console.Clear();
+            //Console.SetCursorPosition(0, 0);
 
             for (int i = 0; i < Console.WindowWidth; i++)
             {
@@ -97,7 +97,8 @@ namespace RockPaperScissorsTest
                         break;
 
                     default:
-                        //choice is not valid
+                        //if the player choose selection it will loop unitl the player select the valid selection.
+                        Console.WriteLine($"{choice} is not a valid. Please try again.\r\n");
                         break;
                 }
 

@@ -17,7 +17,7 @@ Kindly visit the link to download [.Net Framework 4.6](https://dotnet.microsoft.
 
 ### Install
 Open then folder name Installer inside the git repo that you have downloaded. 
-Incase if you don't hay the copy you may download it here. [fad16papa](https://github.com/fad16papa/RockPaperScissors)
+Incase if you don't have the copy you may download it here. [fad16papa](https://github.com/fad16papa/RockPaperScissors)
 
 ![step0](https://user-images.githubusercontent.com/13810195/87892588-0fe47600-ca70-11ea-89f1-54d0356ed86d.PNG)
 
@@ -41,7 +41,16 @@ There will be UAC (User Account Control) prompt message just click yes then inst
 
 Just go to Control Panel then search for SetupRockPaperScissors then right click then click uninstall.
 
-![step5](https://user-images.githubusercontent.com/13810195/87893324-24297280-ca72-11ea-9467-aadbf009fd84.PNG)
+![step1](https://user-images.githubusercontent.com/13810195/87908233-a62c9200-ca98-11ea-8087-161350a5f383.PNG)
+
+### Run Application 
+
+Just double click the application in your desktop and enjoy the game. 
+
+![step1](https://user-images.githubusercontent.com/13810195/87908365-d5430380-ca98-11ea-8c02-cd9970bbfcb6.png)
+
+![step8](https://user-images.githubusercontent.com/13810195/87898583-21824980-ca81-11ea-8136-f6fdf0f79200.PNG)
+
 
 ## Built With
 
