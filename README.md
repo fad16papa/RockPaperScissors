@@ -19,15 +19,15 @@ Kindly visit the link to download [.Net Framework 4.6](https://dotnet.microsoft.
 
 Open then folder name Installer inside the git repo that you have download
 
-``
+
 ![step0](https://user-images.githubusercontent.com/13810195/87892588-0fe47600-ca70-11ea-89f1-54d0356ed86d.PNG)
-``
+
 
 Then click the setup to start the wizard installation 
 
-``
+
 ![step1](https://user-images.githubusercontent.com/13810195/87892505-d3b11580-ca6f-11ea-9345-f855fc5b2d9b.PNG)
-``
+
 
 ## Deployment
 
