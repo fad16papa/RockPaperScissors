@@ -41,13 +41,13 @@ There will be UAC (User Account Control) prompt message just click yes then inst
 
 Just go to Control Panel then search for SetupRockPaperScissors then right click then click uninstall.
 
-![step5](https://user-images.githubusercontent.com/13810195/87893324-24297280-ca72-11ea-9467-aadbf009fd84.PNG)
+![step1](https://user-images.githubusercontent.com/13810195/87908233-a62c9200-ca98-11ea-8087-161350a5f383.PNG)
 
 ### Run Application 
 
 Just double click the application in your desktop and enjoy the game. 
 
-![strp7](https://user-images.githubusercontent.com/13810195/87898514-e718ac80-ca80-11ea-92d1-ad4fde1f8e83.png)
+![step1](https://user-images.githubusercontent.com/13810195/87908365-d5430380-ca98-11ea-8c02-cd9970bbfcb6.png)
 
 ![step8](https://user-images.githubusercontent.com/13810195/87898583-21824980-ca81-11ea-8136-f6fdf0f79200.PNG)
 
