@@ -2,27 +2,46 @@
 
 is a hand game usually played between two people, in which each player simultaneously forms one of three shapes with an outstretched hand. These shapes are "rock" (a closed fist), "paper" (a flat hand), and "scissors" (a fist with the index finger and middle finger extended, forming a V). "Scissors" is identical to the two-fingered V sign (also indicating "victory" or "peace") except that it is pointed horizontally instead of being held upright in the air. A simultaneous, zero-sum game, it has only two possible outcomes: a draw, or a win for one player and a loss for the other.
 
-https://en.wikipedia.org/wiki/Rock_paper_scissors
+For more information kindly visit [Wiki-RockPaperScissor](https://en.wikipedia.org/wiki/Rock_paper_scissors).
 
 ## Getting Started
 
-Please download or git clone the source code and installer wizard at [fad16papa](https://github.com/fad16papa/RockPaperScissors)
+Please download or git clone the source code and installer wizard at [fad16papa](https://github.com/fad16papa/RockPaperScissors).
 
 ### Prerequisites
 
 Make sure to have .Net Framework run time version 4.6 installed in your machine. 
 Incase if you don't have you may download the .Net Framework run time version 4.6 at official Microsoft web site. 
 
-Kindly visit the link to download [.Net Framework](https://dotnet.microsoft.com/download/dotnet-framework/net46)
+Kindly visit the link to download [.Net Framework 4.6](https://dotnet.microsoft.com/download/dotnet-framework/net46)
 
+### Install
+Open then folder name Installer inside the git repo that you have downloaded. 
+Incase if you don't hay the copy you may download it here. [fad16papa](https://github.com/fad16papa/RockPaperScissors)
 
-### Installing
+![step0](https://user-images.githubusercontent.com/13810195/87892588-0fe47600-ca70-11ea-89f1-54d0356ed86d.PNG)
 
-Just follow the step by step prompt message in installation process. 
+Then click the setup to start the wizard installation.
 
-## Deployment
+![step1](https://user-images.githubusercontent.com/13810195/87892505-d3b11580-ca6f-11ea-9345-f855fc5b2d9b.PNG)
 
-Add additional notes about how to deploy this on a live system
+Just follow the wizard installation proces by clicking next.
+
+![step2](https://user-images.githubusercontent.com/13810195/87893035-38b93b00-ca71-11ea-91f2-3ad3fb8af08e.PNG)
+
+You may also change the target directory then click next to proceed. 
+
+![step3](https://user-images.githubusercontent.com/13810195/87893062-51c1ec00-ca71-11ea-9f1f-68ce8da780a5.PNG)
+
+There will be UAC (User Account Control) prompt message just click yes then installation will begin and wait for it to finish. 
+
+![step4](https://user-images.githubusercontent.com/13810195/87893177-af563880-ca71-11ea-9f1d-402b6559760e.PNG)
+
+### Uninstall
+
+Just go to Control Panel then search for SetupRockPaperScissors then right click then click uninstall.
+
+![step5](https://user-images.githubusercontent.com/13810195/87893324-24297280-ca72-11ea-9467-aadbf009fd84.PNG)
 
 ## Built With
 
@@ -32,7 +51,7 @@ Add additional notes about how to deploy this on a live system
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://github.com/fad16papa/RockPaperScissors/blob/Francis/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
+Please read [CONTRIBUTING.md](https://github.com/fad16papa/RockPaperScissors/blob/Francis/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to me.
 
 ## Versioning
 
@@ -48,6 +67,6 @@ This project is licensed under Francis Decena. This is for code assessment only.
 
 ## Acknowledgments
 
-* Mavericks Consulting https://www.mavericks-consulting.com/
+* Mavericks Consulting please visit https://www.mavericks-consulting.com/
 * Coding assessment software developer
 * Inspiration

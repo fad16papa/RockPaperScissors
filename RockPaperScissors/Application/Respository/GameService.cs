@@ -251,10 +251,10 @@ namespace RockPaperScissors.Application.Respository
             {
                 //Calculate who will be the winner computer vs computer
                 PlayerOption firstComputerChoice = GetComputerSelection();
-                Console.WriteLine($"The computer choosed: {firstComputerChoice}");
+                Console.WriteLine($"The Computer1 choosed: {firstComputerChoice}");
 
                 PlayerOption secondComputerChoice = GetComputerSelection();
-                Console.WriteLine($"The computer choosed: {secondComputerChoice}");
+                Console.WriteLine($"The Computer2 choosed: {secondComputerChoice}");
 
                 gameOptions = CalculateWinner(firstComputerChoice, secondComputerChoice, gameOptions);
                 gameOptions.computerOnly = true;
@@ -263,10 +263,12 @@ namespace RockPaperScissors.Application.Respository
             { 
                 //Calaculate who will be the winner player vs computer 
                 PlayerOption computerChoice = GetComputerSelection();
-                Console.WriteLine($"The computer choosed: {computerChoice}");
-
                 PlayerOption playerChoice = GetPlayerSelection();
-                Console.WriteLine($"You choosed: {playerChoice}");               
+
+                //show the computer selected
+                Console.WriteLine($"The computer choosed: {computerChoice}");
+                //show the player selected 
+                Console.WriteLine($"You choosed: {playerChoice}");
 
                 gameOptions = CalculateWinner(playerChoice, computerChoice, gameOptions);
                 gameOptions.computerOnly = false;
