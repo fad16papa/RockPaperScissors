@@ -33,7 +33,7 @@ You may also change the target directory then click next to proceed.
 
 ![step3](https://user-images.githubusercontent.com/13810195/87893062-51c1ec00-ca71-11ea-9f1f-68ce8da780a5.PNG)
 
-There will be UAC (User Account Control) propmt message just click yes then installation will begin and wait for it to finish. 
+There will be UAC (User Account Control) prompt message just click yes then installation will begin and wait for it to finish. 
 
 ![step4](https://user-images.githubusercontent.com/13810195/87893177-af563880-ca71-11ea-9f1d-402b6559760e.PNG)
 
@@ -51,7 +51,7 @@ Just go to Control Panel then search for SetupRockPaperScissors then right click
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://github.com/fad16papa/RockPaperScissors/blob/Francis/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
+Please read [CONTRIBUTING.md](https://github.com/fad16papa/RockPaperScissors/blob/Francis/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to me.
 
 ## Versioning
 
@@ -67,6 +67,6 @@ This project is licensed under Francis Decena. This is for code assessment only.
 
 ## Acknowledgments
 
-* Mavericks Consulting https://www.mavericks-consulting.com/
+* Mavericks Consulting please visit https://www.mavericks-consulting.com/
 * Coding assessment software developer
 * Inspiration
