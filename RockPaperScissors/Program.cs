@@ -32,9 +32,6 @@ namespace RockPaperScissors
                 //declare string.empty playerName for container name of the player 
                 string playerName = string.Empty;
 
-                //declare string.empty totalGameRound for cointaner of total game round specify by player
-                string totalGameRound = string.Empty;
-
                 //declare string.empty for container of gamerSelection
                 string gamerSelection = string.Empty;
                 #endregion

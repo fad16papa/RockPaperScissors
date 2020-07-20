@@ -10,7 +10,6 @@ namespace RockPaperScissors.Helper
     {
         private static Random random = new Random(Environment.TickCount);
 
-
         public static T Of<T>()
         {
             if (!typeof(T).IsEnum)

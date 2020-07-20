@@ -292,6 +292,9 @@ namespace RockPaperScissors.Application.Respository
         {
             /// <summary>
             /// Declare Dictionary for comparing of selection 
+            /// rock beats scissors 
+            /// scissors beats paper 
+            /// paper beats rock
             /// </summary>
             Dictionary<PlayerOption, PlayerOption> winners = new Dictionary<PlayerOption, PlayerOption>
             {
